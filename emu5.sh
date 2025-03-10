@@ -11,90 +11,32 @@
 #   |1 LABEL|2 MOV|3 A,B |; some comments
 #
 # field: |1
+# comment
 /^[ 	]*;/b	# comment line, skip processing
-s/^/|||/ # token added
-:state1
-/|||;/{	# whole line comment
-	s/|||/|1 |2 |3 |/
-	b
+# label
+/^[^ 	]/{		# label
+	s/^\([^ 	][^ 	]*\)/|1 \1>>>\
+/
+	P
+	s/^[^\n]*\n//
 }
-/|||[^ 	]/{	# label
-	s/|||\([^; 	][^;	 ]*\)[ 	]*/|1 \1|||/
-	b state2
+/^[ 	]*;/b	# comment, skip processing
+s/^[ 	][ 	]*//
+# opcode
+/^[^ 	]/{		# opcode
+	s/^\([^ 	][^ 	]*\)/|2 \1>>>\
+/
+	P
+	s/^[^\n]*\n//
 }
-/|||[ 	]/{ # no-label
-	s/|||[ 	][ 	]*/|1 |||/
-	b state2
+/^[ 	]*;/b	# comment, skip processing
+s/^[ 	][ 	]*//
+# oprand
+s/^/|3 /
+/[ 	][ 	]*;/{
+	s/[ 	][ 	]*;/|;/
 }
-/|||$/{
-	b end
-}
-s/$/ __BAD1/
-b end
-:state2
-/|||;/{
-	s/|||;/|2 |3 |;/
-	b end
-}
-/|||[ 	]*$/{
-	s/|||[ 	]*$/|2 |3 |||/
-	b end
-}
-/|||[^ 	]/{	# opcode
-	s/|||\([^; 	][^; 	]*\)[ 	]*/|2 \1|||/
-	b state3
-}
-:state3
-/|||;/{
-	s/|||;/|3 |;/
-	b end
-}
-/|||[^ 	]/{	# oprand
-	s/|||/|3 |||/
-	:loop
-	/|||[ 	]*$/{
-		b end
-	}
-	/|||'\''/{
-		s/|||\('\''[^'\'']*'\''\)[ 	]*/\1|||/
-		b loop
-	}
-	/|||"/{
-		s/|||\("[^"]*"\)[ 	]*/\1|||/
-		b loop
-	}
-	/|||[^; 	 ]/{
-		s/|||\([^;'\''" 	][^;'\''" 	]*\)[ 	]*/\1|||/
-		b loop
-	}
-	/|||;/{
-		b state4
-	}
-	s/^/ __BAD3/
-	b end
-}
-/|||[ 	]*$/{ # no operand
-	s/|||[ 	]*/|3 |||/
-	b end
-}
-s/^/BAD4 /
-b end
-:state4
-/|||;/{
-	s/|||/ |/
-	b end
-}
-/|||[ 	]*$/{
-	s/|||/ /
-	w/dev/tty
-	b end
-}
-s/^/ __BAD5/
-b end
-:end
-	# flush whole line
-	s/|||$/ /
-' |sed '
+' |tee x1.log |sed '
 #
 # operant parser
 # single- and double-quote string ('str', "str") are converted
@@ -104,80 +46,36 @@ b end
 # The marker, "|||" traverses among expressions, either 'c', "str", 
 # or constants
 #
-/|2 DB|/{
-	s/\(|3 \)/\1|||/
-	:loop
-	#p
-	/|||[ 	]*|;/b end
-	/|||[ 	]*$/b end
-	/|3 |||,/s/\(|3 |||\),/\1/
-	/|||"[^"][^"]*",/b str
-	/|||"[^"][^"]*"/{
-	:str
-		# char string 
-		s/^/:/p
-		s/://
-		s/|||\("[^"][^"]*"\),/\1\
-|1 |2 DB|3 |||/
-		s/|||\("[^"][^"]*"\) *$/\1\
-|1 |2 DB|3 |||/
-
-		s/^/>/p
-		s/>//
-		b loop
-	}
-	/|||"[^"][^"]*"/{
-		# char string 
-		s/|||\("[^"][^"]*"\)/\1|||/
-		b loop
-	}
-	/|||,"/{
-		s/|||,"/\
-|1 |2 DB|3 |||"/
-		b loop
-	}
-	/|||,[^"]/{
-		s/|||,/,|||/
-		b loop
-	}
-	/|||[^",][^",]*/{
-		b reset1
-	:reset1
-		# hex convertion
-		s/|||\([0-9A-Fa-f][0-9A-Fa-f]*\)[Hh],/|||0x\1,/g
-		s/|||\([0-9A-Fa-f][0-9A-Fa-f]*\)[Hh][ 	]*|;/|||0x\1 |;/
-		s/|||\([0-9A-Fa-f][0-9A-Fa-f]*\)[Hh][ 	]*$/|||0x\1/
-		/|||0x/b loop2
-		# binary convertion
-		s/|||\([01][01]*\)[Bb],/|||0b\1,/g
-		s/|||\([01][01]*\)[Bb][ 	]*|;/|||0b\1 |;/
-		s/|||\([01][01]*\)[Bb][ 	]*$/|||0b\1/
-		/|||0b/b loop2
-		# move the marker
-	:loop2
-		s/^/</p
-		s/<//
-		s/|||\([^",][^",]*\),/\1,|||/
-		s/|||\([^",][^",]*\) /\1 |||/
-		s/|||\([^",][^",]*\)$/\1|||/
-		b loop0
-	:loop0
-		b loop
-	}
-	s/$/ __BAD6/
-	b
-:end
-# finally erase the delimter
-	s/|||[ 	]*//
-#	s/$/ END/
-#	s/\n[^\n]*END$//
-#	s/\(|3 \),/\1/g
-#	s/\(|3 .*\),\n/\1\n/g
-#	s/\(|3 .*\),$/\1$/
-	b
+/^|3 /!b
+# operand line
+:loop
+/[^>]$/s/$/>>>>/
+/^|3 "/{		# string at the 1st operand
+	s/\("[^"][^"]*"\),/\1\
+|2 DB>>>\
+|3 /
+	P
+	s/[^\n]*\n//
+	P
+	s/[^\n]*\n//
+	b loop
 }
-b
-' |tee xx.log |sed '
+/\([0-9A-Za-z]\),"/{	# string
+s/^/>/p
+s/>//
+	s/\([0-9A-Za-z]\),\("[^"][^"]*"\),/\1\
+|2 DB >>>\
+|3 \2\
+|2 DB >>>\
+|3 /
+s/^/</p
+s/<//
+	P
+	s/[^\n]*\n//
+	b loop
+}
+d
+' |sed 1000q >xx.log; exit; sed '
 # address $ convertion
 /|2 EQU|/{
 :dolloop
