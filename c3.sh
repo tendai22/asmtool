@@ -3,7 +3,10 @@ sed '
 #
 # conversion in expression
 #
-/|3  [^"]/{
+/|[3T] [^"]/{
+	# set marker to the tail
+	s/\(|[3T] ..*[^ ]\)  *|;/\1, |;/
+	s/\(|[3T] ..*[^ ]\) *$/\1,/
 	# convert '012ABH' to '0x12AB'
 	s/\([ +*/,-]\)\([0-9A-Fa-f][0-9A-Fa-f]*\)[Hh]\([ +*/,->]\)/\10x\2\3/g
 	s/\([ +*/,-]\)\([01][01]*\)[Bb]\([ +*/,->]\)/\10b\2\3/g
@@ -17,6 +20,9 @@ sed '
 	t ppp
 	b
 :ppp
+	# remove marker
+	s/, |;/ |;/
+	s/,$//
 #	/|2 CP|/w/dev/tty
 }
-'
+' |tee x33.log

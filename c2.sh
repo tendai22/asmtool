@@ -25,13 +25,18 @@ sed '
     # delimiter separation
     # word
 	s/^\(|[3T] [  ]*[A-Za-z0-9_()][A-Za-z0-9_()]*[^A-Za-z0-9_()>]\)/\1>>>\
-|T  /
+|T /
     # character constant
     s/^\(|[3T] [  ]*'\''.'\''[^A-Za-z0-9_>]\)/\1>>>\
-|T  /
+|T /
     # ascii string
-    s/^\(|[3T] [  ]*"[^"][^"]*"\),/\1>>>\
-|T  /
+    s/^\(|3 [  ]*"[^"][^"]*"\),/\1\
+|2 DB>>>\
+|3 /
+    s/^|T \([  ]*"[^"][^"]*"\),/|2 DB>>>\
+|3 \1\
+|2 DB>>>\
+|3 /
     # delimter separation
     P
     s/^[^\n]*//
