@@ -1,5 +1,3 @@
-#! /bin/sh
-
 ;	EMUBASIC based on GRANT's BASIC
 ;	TARGET: EMUZ80
 ;	ASSEMBLER: ARCPIT XZ80.EXE
