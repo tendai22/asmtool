@@ -2,6 +2,12 @@
 cat "$@" |
 sed '
 #
+# label formatter
+#    force to append ":"
+/^|1 /s/\([^:]\)>>>$/\1:>>>/
+' |
+sed '
+#
 # operant parser
 # single- and double-quote string ('str', "str") are converted
 # to separated DB opcode lines
