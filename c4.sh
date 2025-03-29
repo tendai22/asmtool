@@ -45,8 +45,8 @@ s/",  |T  \([^"]\)/"\
 sed '
 # some final adjusting, erase trailing comma
 s/^|2 /|1   |2 /
-s/\(|3 .*\),\( |;\)/\1\2/
-s/\(|3 .*\), *$/\1/
+s/\(|3 .*[^'\'']\),\( |;\)/\1\2/
+s/\(|3 .*[^'\'']\), *$/\1/
 
 # fill columns with spaces
 s/|1 |2/|1        |2/
