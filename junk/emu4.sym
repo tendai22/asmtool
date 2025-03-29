@@ -1,0 +1,367 @@
+ASxxxx Assembler V05.31  (Zilog Z80 / Hitachi HD64180)                  Page 1
+Hexadecimal [16-Bits]                                 Mon Mar 10 22:59:40 2025
+
+Symbol Table
+
+    .__.$$$.       =   2710 L   |     .__.ABS.       =   0000 G
+    .__.CPU.       =   0000 L   |     .__.H$L.       =   0000 L
+  2 ABPASS             0FF6 R   |   2 ABS                1642 R
+  2 ACCSUM             085F R   |   2 ACPASS             0FF5 R
+  2 ADD30              1B54 R   |   2 ADD301             1B64 R
+  2 ADDEXP             15DB R   |   2 ADDIG              1781 R
+  2 ADDPHL             13C8 R   |   2 ALLFOL             12C4 R
+  2 ANTVLU             0B5F R   |   2 ARET               1AD2 R
+  2 ARLDSV             0F16 R   |     ARREND         =   811F 
+  2 ARRLP              118F R   |   2 ASC                1295 R
+  2 ASCTFP             1724 R   |   2 ASPCS              0AC1 R
+  2 ATN                1A86 R   |   2 ATN1               1AA3 R
+  2 ATNTAB             1AAD R   |   2 ATOH               089A R
+  2 BADINP             0AE6 R   |   2 BAKSTK             031F R
+  2 BAKTMP             1275 R   |     BASTXT         =   80A3 
+  2 BCDEFP             1669 R   |   2 BFREE              00D1 R
+  2 BIN                1BA6 R   |   2 BIN2               1BAC R
+  2 BINERR             1C03 R   |   2 BINIT              1BE2 R
+  2 BINTFP             1BD8 R   |   2 BITOUT             1BC0 R
+  2 BITOUT2            1BC4 R   |     BKSP           =   0008 
+    BN             =   0028     |   2 BNORM              1428 R
+  2 BNRMLP             142B R   |   2 BRK                0811 R
+    BRKFLG         =   8092     |     BRKLIN         =   8113 
+  2 BRKMSG             0319 R   |   2 BRKRET             00C2 R
+    BS             =   0010     |   2 BSERR              0F49 R
+    BUFFER         =   80A6     |   2 BYT2ASC            1B4B R
+  2 BYTSFT             1560 R   |   2 CFEVAL             0EAC R
+  2 CHARTY             0E5A R   |   2 CHEKFN             108D R
+  2 CHKBIN             1BF5 R   |   2 CHKLTR             086C R
+  2 CHKSTK             0353 R   |     CHKSUM         =   808F 
+  2 CHKSYN             0644 R   |   2 CHKTYP             0C40 R
+  2 CHR                12A6 R   |   2 CLEAR              08BF R
+  2 CLOTST             0679 R   |   2 CLREG              04A8 R
+  2 CLRPTR             0483 R   |   2 CLS                1AD5 R
+  2 CMPFP              16B2 R   |   2 CMPLG1             0DC0 R
+  2 CMPLOG             0DBE R   |   2 CMPNUM             1698 R
+  2 CMPRES             0E02 R   |   2 CMPSTR             0DEA R
+    CN             =   0020     |   2 CNVNUM             1730 R
+  2 COLD               0044 R   |     COMMAN         =   8088 
+  2 COMPL              1488 R   |   2 CONCAT             120A R
+  2 CONEXP             1760 R   |   2 CONPOS             1425 R
+  2 CONT               0844 R   |     CONTAD         =   8119 
+  2 CONVAR             0D2B R   |   2 COPY               0060 R
+  2 COS                1A0A R   |   2 COUNT              06E9 R
+  2 CPDEHL             063E R   |   2 CPYLIT             057A R
+    CR             =   000D     |   2 CRARLP             0F69 R
+  2 CREARY             0F4E R   |   2 CRESTR             09BE R
+  2 CRNCLP             04DB R   |   2 CRTMST             10C6 R
+  2 CRTST              10D2 R   |   2 CRTSTE             10E8 R
+  2 CRUNCH             04D2 R   |     CS             =   000C 
+  2 CSTART             0051 R   |     CTLOFG         =   808A 
+    CTRLC          =   0003     |     CTRLG          =   0007 
+    CTRLO          =   000F     |     CTRLQ          =   0011 
+    CTRLR          =   0012     |     CTRLS          =   0013 
+    CTRLU          =   0015     |     CUROPR         =   810A 
+ASxxxx Assembler V05.31  (Zilog Z80 / Hitachi HD64180)                  Page 2
+Hexadecimal [16-Bits]                                 Mon Mar 10 22:59:40 2025
+
+Symbol Table
+
+    CURPOS         =   80F0     |   2 DATA               0965 R
+    DATFLG         =   80F3     |     DATLIN         =   810E 
+  2 DATSNR             0370 R   |   2 DCBCDE             16E9 R
+  2 DDERR              037F R   |   2 DEEK               1AF1 R
+  2 DEF                100A R   |   2 DEFSIZ             0F71 R
+  2 DEINT              0880 R   |     DEL            =   007F 
+  2 DELCHR             05AA R   |   2 DEPINT             087A R
+  2 DETHL4             1678 R   |   2 DETHLB             167A R
+  2 DIGTXT             182A R   |   2 DIM                0E2C R
+  2 DIMRET             0E23 R   |   2 DINPOS             0673 R
+  2 DIV                1571 R   |     DIV1           =   804F 
+  2 DIV10              1565 R   |     DIV2           =   8053 
+    DIV3           =   8057     |     DIV4           =   805A 
+  2 DIVLP              1598 R   |     DIVSUP         =   804E 
+  2 DOAGN              04C1 R   |   2 DOCOM              0A92 R
+  2 DODEL              058A R   |   2 DOEBIT             186A R
+  2 DOFN               1037 R   |   2 DOKE               1AFC R
+  2 DONULL             0A80 R   |   2 DOSPC              0ABC R
+  2 DOTAB              0AA9 R   |   2 DPOINT             175C R
+  2 DTSTR              10D6 R   |   2 DVBCDE             1573 R
+    DZ             =   0014     |   2 DZERR              0379 R
+  2 ECHDEL             059E R   |   2 EDIGIT             17A3 R
+  2 ENDBUF             0581 R   |   2 ENDCON             176F R
+  2 ENDDIM             0FD0 R   |   2 ENDINP             0A71 R
+  2 ENDNAM             0E4E R   |   2 ENDPRG             0820 R
+  2 ENFMEM             035C R   |   2 ERRIN              03AA R
+    ERRLIN         =   8117     |   2 ERRMSG             0307 R
+  2 ERROR              038A R   |   2 ERRORS             027D R
+    ESC            =   001B     |   2 EVAL               0C4D R
+  2 EVAL1              0C50 R   |   2 EVAL2              0C59 R
+  2 EVAL3              0C5C R   |   2 EVLPAR             0D12 R
+  2 EVNOT              0E0C R   |   2 EXCUTE             07AE R
+  2 EXP                1904 R   |   2 EXPLP              174E R
+  2 EXPTAB             1944 R   |   2 EXPTEN             187C R
+  2 EXTIG              0BBB R   |   2 FANDT              0BE5 R
+    FC             =   0008     |   2 FCERR              0895 R
+  2 FDTLP              0BCC R   |   2 FINDEL             0FAC R
+  2 FLGDIF             1628 R   |   2 FLGREL             162F R
+    FNARG          =   8125     |   2 FNCTAB             0149 R
+  2 FNDARY             0F1C R   |   2 FNDELP             0FB1 R
+  2 FNDEND             0456 R   |   2 FNDNUM             1399 R
+  2 FNDTOK             06C8 R   |   2 FNDVAR             0E93 R
+  2 FNDWRD             0505 R   |   2 FNOFST             0D3C R
+    FNRGNM         =   8123     |   2 FNTHR              0EA1 R
+  2 FNVAL              0D63 R   |   2 FOPRND             0C85 R
+  2 FOR                0715 R   |     FORFLG         =   8110 
+  2 FORFND             0745 R   |   2 FORSLP             0729 R
+  2 FPADD              13D7 R   |   2 FPBCDE             165E R
+    FPEXP          =   812C     |   2 FPINT              16C5 R
+  2 FPMULT             1512 R   |     FPREG          =   8129 
+  2 FPROND             146F R   |   2 FPSINT             0874 R
+  2 FPTHL              1675 R   |   2 FRE                0FD4 R
+  2 FRENUM             0FF0 R   |   2 FRMEVL             0D2E R
+  2 GARBGE             1157 R   |   2 GARBLP             115A R
+  2 GETCHR             07CE R   |   2 GETCMD             03CE R
+ASxxxx Assembler V05.31  (Zilog Z80 / Hitachi HD64180)                  Page 3
+Hexadecimal [16-Bits]                                 Mon Mar 10 22:59:40 2025
+
+Symbol Table
+
+  2 GETHEX             1B81 R   |   2 GETINP             1AD3 R
+  2 GETINT             139C R   |   2 GETLEN             128A R
+  2 GETLIN             05BB R   |   2 GETLN              089B R
+  2 GETNUM             0C3B R   |   2 GETNXT             0520 R
+  2 GETSTR             1254 R   |   2 GETVAR             0E31 R
+  2 GNXARY             118E R   |   2 GOFUNC             0D6B R
+  2 GOSUB              0911 R   |   2 GOTO               0922 R
+  2 GRBARY             11AE R   |   2 GRBDON             112F R
+  2 GRBLP              1168 R   |   2 GSTRCU             1257 R
+  2 GSTRDE             125B R   |   2 GSTRHL             125A R
+  2 GTFLNM             1299 R   |   2 GTFNAM             0E36 R
+  2 GTLNLP             089E R   |   2 GTSIXD             17F4 R
+  2 GTVLUS             0B37 R   |   2 HALF               189B R
+  2 HALFPI             1A54 R   |   2 HEX                1B13 R
+  2 HEX1               1B2C R   |   2 HEX2               1B2E R
+  2 HEX3               1B3C R   |   2 HEX4               1B3E R
+  2 HEXIT              1B98 R   |   2 HEXLP              1B74 R
+  2 HEXLP1             1B79 R   |   2 HEXTFP             1B68 R
+    HX             =   0026     |   2 HXERR              1BA1 R
+    ID             =   0016     |   2 IDTEST             107F R
+  2 IF                 09F4 R   |   2 IFGO               0A02 R
+  2 IFJMP              07B5 R   |   2 INCHL              1673 R
+  2 INCLEN             066F R   |   2 INDFND             0339 R
+  2 INEWLN             041E R   |   2 INIT               0058 R
+  2 INITAB             02A7 R   |   2 INITBE             0307 R
+  2 INITST             1C11 R   |   2 INMSG              030E R
+  2 INP                1359 R   |   2 INPBIN             0B89 R
+  2 INPBRK             081D R   |     INPORT         =   8084 
+    INPSUB         =   8083     |   2 INPUT              0AF7 R
+  2 INRNG              17FD R   |   2 INT                16F0 R
+  2 INTVAR             0492 R   |   2 INVSGN             1646 R
+  2 ITMSEP             0B7A R   |   2 JJUMP1             1C08 R
+  2 JSTZER             1886 R   |   2 KBHIT              002E R
+  2 KILFOR             0C2B R   |   2 KILIN              05B5 R
+    LCRFLG         =   80F1     |   2 LEFT               12B6 R
+  2 LEN                1286 R   |   2 LET                097C R
+  2 LETNUM             09CF R   |   2 LETSTR             0997 R
+    LF             =   000A     |   2 LFRGNM             134F R
+    LINEAT         =   80A1     |   2 LINEIN             17AF R
+  2 LINES              1AE2 R   |     LINESC         =   808B 
+    LINESN         =   808D     |   2 LINFND             0407 R
+  2 LIST               068A R   |   2 LISTLP             0696 R
+  2 LOADFP             166C R   |   2 LOG                14D1 R
+  2 LOGTAB             14C4 R   |   2 LOKFOR             0323 R
+    LOOPST         =   810C     |     LS             =   001C 
+    LSTBIN         =   8111     |   2 LSTLP2             06B6 R
+  2 LSTLP3             06B9 R   |     LSTRAM         =   80F4 
+    LSTRND         =   807F     |   2 LTSTND             0B94 R
+    LWIDTH         =   8087     |   2 MAKINT             139F R
+  2 MAKNUM             1819 R   |   2 MANLP              1738 R
+  2 MATCH              0552 R   |   2 MEMMSG             0117 R
+  2 MID                12F0 R   |   2 MID1               12BC R
+  2 MIDNUM             1354 R   |   2 MINCDE             1417 R
+  2 MINUS              0D1A R   |   2 MKTMST             10C3 R
+  2 MLDBLP             1711 R   |   2 MLDEBC             1709 R
+ASxxxx Assembler V05.31  (Zilog Z80 / Hitachi HD64180)                  Page 4
+Hexadecimal [16-Bits]                                 Mon Mar 10 22:59:40 2025
+
+Symbol Table
+
+  2 MLOOP              0078 R   |   2 MLSP10             1606 R
+    MO             =   0024     |   2 MONITR             1C0E R
+  2 MONOUT             1C0B R   |   2 MORDT              0BA0 R
+  2 MORINP             05C4 R   |   2 MOVBUF             043D R
+  2 MOVDIR             055A R   |   2 MOVLP              0348 R
+  2 MOVSTR             0345 R   |   2 MOVUP              0342 R
+  2 MRPRNT             0A14 R   |   2 MSIZE              0075 R
+  2 MUL8LP             153D R   |   2 MULLN2             1509 R
+  2 MULT               1510 R   |   2 MULT8              1534 R
+  2 MULTEN             177A R   |     MULVAL         =   813B 
+  2 MVSTPT             09C6 R   |   2 NEDMOR             0B33 R
+  2 NEGAFT             18B1 R   |   2 NEMEM              00C8 R
+  2 NEW                0482 R   |   2 NEXITM             0ACC R
+  2 NEXT               0BF0 R   |   2 NEXT1              0BF3 R
+    NF             =   0000     |   2 NFERR              037C R
+    NMIFLG         =   8091     |   2 NOCHNG             054A R
+  2 NOENED             1889 R   |   2 NOLIN              0833 R
+  2 NOMADD             154E R   |   2 NOMLAD             171F R
+  2 NOPMPT             0B11 R   |   2 NORMAL             1442 R
+  2 NOSPC              0541 R   |   2 NOSUB7             1B94 R
+  2 NOSWAP             13F1 R   |   2 NOTAMP             0CEF R
+  2 NOTSTR             0E69 R   |   2 NOXOR              137F R
+  2 NSCFOR             0E79 R   |     NULFLG         =   8089 
+  2 NULL               0857 R   |   2 NULLP              0A87 R
+    NULLS          =   8086     |   2 NUMASC             17C2 R
+  2 NXTARY             0F30 R   |   2 NXTBYT             0530 R
+  2 NXTCHR             0571 R   |     NXTDAT         =   8121 
+  2 NXTDTA             0964 R   |   2 NXTITM             0B2B R
+    NXTOPR         =   8115     |   2 NXTSTL             096B R
+  2 NXTSTT             096E R   |     OD             =   0006 
+  2 OKMSG              0313 R   |     OM             =   000C 
+  2 OMERR              036B R   |   2 ON                 09D6 R
+  2 ONGO               09E5 R   |   2 ONGOLP             09E6 R
+  2 ONJMP              07B6 R   |   2 OPNPAR             0C49 R
+  2 OPRND              0CC4 R   |     OS             =   001A 
+  2 OTKLN              05B2 R   |     OTPORT         =   804C 
+  2 OUTC               064F R   |   2 OUTEXP             187A R
+  2 OUTIT              0630 R   |   2 OUTNBS             0636 R
+  2 OUTNCR             1C20 R   |     OUTSUB         =   804B 
+  2 OUTWRD             06D2 R   |     OV             =   000A 
+  2 OVERR              0385 R   |   2 OVTST1             15F9 R
+  2 OVTST2             15FE R   |   2 OVTST3             15FF R
+  2 PADD               179E R   |   2 PAND               0D85 R
+  2 PASSA              1005 R   |     PBUFF          =   812E 
+  2 PEEK               13AD R   |   2 PEND               0818 R
+  2 PHLTFP             165B R   |   2 PLUCDE             147C R
+  2 PNORM              144A R   |     POINT          =   8096 
+  2 POKE               13B4 R   |   2 POPAF              1149 R
+  2 POPHL              1273 R   |   2 POPHRT             155E R
+  2 POPNOK             03C0 R   |   2 POR                0D84 R
+  2 POR1               0DA7 R   |   2 POS                1002 R
+  2 POSINT             0877 R   |   2 POUT               1365 R
+  2 POWER              18BF R   |   2 POWER1             18CF R
+  2 POWER2             18EC R   |   2 POWERS             189F R
+  2 PRCRLF             0A76 R   |   2 PRINT              0A18 R
+ASxxxx Assembler V05.31  (Zilog Z80 / Hitachi HD64180)                  Page 5
+Hexadecimal [16-Bits]                                 Mon Mar 10 22:59:40 2025
+
+Symbol Table
+
+  2 PRITAB             0268 R   |   2 PRNTHL             17B7 R
+  2 PRNTLP             0A1B R   |   2 PRNTNB             0A5E R
+  2 PRNTOK             03C1 R   |   2 PRNTST             0A62 R
+  2 PRNUMS             1113 R   |   2 PROCES             05DD R
+    PROGND         =   811B     |     PROGST         =   813E 
+  2 PROMPT             04C5 R   |   2 PRS                1114 R
+  2 PRS1               1117 R   |   2 PRSLP              111E R
+    PSET           =   8099     |   2 PSUB               13D2 R
+  2 PTRLP              044A R   |   2 PUTBUF             061C R
+  2 PUTCTL             0621 R   |   2 PUTFID             078A R
+  2 QTSTLP             10D9 R   |   2 QTSTR              10D3 R
+  2 QUARTR             1A58 R   |     RAMSIZ         =   1000 
+    RAMTOP         =   8000     |     RD             =   0012 
+  2 READ               0B26 R   |     READFG         =   8112 
+  2 REDO               0AD3 R   |   2 REM                0967 R
+  2 RESDIV             15AB R   |   2 RESEED             19F6 R
+    RESET          =   809C     |   2 RESTNL             07F3 R
+  2 RESTOR             07DE R   |   2 RESZER             143D R
+  2 RETADR             0EE0 R   |   2 RETINT             1634 R
+  2 RETLIN             095F R   |   2 RETNAD             0556 R
+  2 RETNUL             0EE3 R   |   2 RETNUM             0D26 R
+  2 RETREL             1626 R   |   2 RETURN             0940 R
+    RG             =   0004     |   2 RIGHT              12E6 R
+  2 RIGHT1             12BA R   |     RINPUT         =   8093 
+  2 RLTLP              0C69 R   |   2 RND                1995 R
+  2 RND1               19D1 R   |   2 RND2               19ED R
+  2 RNDTAB             19FE R   |   2 RNGTST             188C R
+    ROMTOP         =   0000     |   2 RONDB              145E R
+  2 RONDUP             145D R   |   2 ROUND              13C5 R
+  2 RSCALE             1798 R   |   2 RSLNBK             070C R
+  2 RSTSTR             1309 R   |   2 RUN                0905 R
+  2 RUNCNT             078E R   |   2 RUNFST             048E R
+  2 RUNLIN             0921 R   |   2 RXA                001B R
+  2 SAVEXP             143E R   |   2 SAVSTP             0781 R
+  2 SAVSTR             10AE R   |   2 SBSCPT             0EEE R
+  2 SCALE              149C R   |   2 SCALLP             149E R
+  2 SCALMI             1763 R   |   2 SCALPL             1779 R
+  2 SCNEND             11E5 R   |   2 SCPTLP             0EF4 R
+  2 SEARCH             051E R   |     SEED           =   805C 
+  2 SETIO              1389 R   |   2 SETLIN             06E0 R
+  2 SETLIT             0568 R   |   2 SETPTR             0445 R
+  2 SETTOP             0087 R   |   2 SFTPRG             040F R
+  2 SGN                162C R   |   2 SGNEXP             0D74 R
+    SGNRES         =   812D     |   2 SHRITE             14AB R
+  2 SHRLP              14AE R   |   2 SHRT1              14B2 R
+  2 SIGNON             00E0 R   |   2 SIGNS              1683 R
+  2 SIN                1A10 R   |   2 SIN1               1A40 R
+  2 SINIT              0041 R   |   2 SINTAB             1A5C R
+  2 SIXDIG             17DF R   |   2 SMPVAR             1179 R
+  2 SMSER1             1974 R   |     SN             =   0002 
+  2 SNERR              0376 R   |   2 SPCFST             17D0 R
+  2 SPCLP              0AC5 R   |   2 SQR                18B6 R
+  2 SRCHLN             0462 R   |   2 SRCHLP             0465 R
+  2 SSTSA              1241 R   |     ST             =   001E 
+    STACK          =   80AB     |   2 STAKFP             164E R
+ASxxxx Assembler V05.31  (Zilog Z80 / Hitachi HD64180)                  Page 6
+Hexadecimal [16-Bits]                                 Mon Mar 10 22:59:40 2025
+
+Symbol Table
+
+  2 STALL              0807 R   |   2 STARTB             004A R
+  2 STKTHS             0CAD R   |     STLOOK         =   81A2 
+  2 STOP               0816 R   |   2 STORED             08E2 R
+  2 STPOOL             11BC R   |   2 STR                109E R
+  2 STR1               10A4 R   |   2 STRADD             11BF R
+    STRBOT         =   8108     |   2 STRENT             0B7D R
+    STRSPC         =   809F     |   2 STTLIN             0A69 R
+  2 SUBCDE             13D4 R   |   2 SUBPHL             13CE R
+  2 SUMLP              197D R   |   2 SUMSER             1965 R
+  2 SUPTLZ             185E R   |   2 SVNAM2             0E4D R
+  2 SVSTAD             10CC R   |   2 TAN                1A71 R
+  2 TESTOS             114B R   |   2 TESTR              112D R
+    TM             =   0018     |   2 TMERR              0388 R
+    TMPSTR         =   8104     |     TMSTPL         =   80F8 
+    TMSTPT         =   80F6     |   2 TOPOOL             12B2 R
+  2 TOSTRA             124A R   |   2 TRYAGN             1839 R
+  2 TSALP              124B R   |     TSTACK         =   80ED 
+  2 TSTBIT             1C19 R   |   2 TSTBRK             07F9 R
+  2 TSTNUM             0C3E R   |   2 TSTOPL             10F4 R
+  2 TSTRED             0DAC R   |   2 TSTREM             056B R
+  2 TSTSGN             161D R   |   2 TSTSTR             0C3F R
+  2 TTYLIN             05BB R   |   2 TXA                0034 R
+  2 TXAST1             0035 R   |     TYPE           =   80F2 
+    UARTCR         =   E001     |     UARTDR         =   E000 
+    UF             =   0022     |   2 UFERR              0382 R
+    UL             =   000E     |   2 ULERR              093B R
+  2 UNITY              14C0 R   |   2 UPDATA             07F4 R
+    USR            =   8048     |   2 VAL                1320 R
+  2 VAL1               133E R   |   2 VAL2               1348 R
+  2 VAL3               134B R   |     VAREND         =   811D 
+  2 WAIT               136B R   |   2 WAITLP             1380 R
+  2 WARM               0047 R   |   2 WARMST             00BF R
+  2 WIDTH              1ADA R   |   2 WORDS              0181 R
+  2 WORDTB             021E R   |     WRKSPC         =   8045 
+  2 XXXXX              00CE R   |     ZDATA          =   0083 
+    ZDIV           =   00AF     |     ZEND           =   0080 
+    ZEQUAL         =   00B4     |   2 ZERARY             0F8F R
+  2 ZERBYT         =   0312 R   |   2 ZEROLP             0ED2 R
+  2 ZEROSUP            1BB2 R   |     ZFN            =   00A7 
+    ZFOR           =   0081     |     ZGOSUB         =   008C 
+    ZGOTO          =   0088     |     ZGTR           =   00B3 
+    ZLEFT          =   00CF     |     ZLTH           =   00B5 
+    ZMINUS         =   00AD     |     ZNEW           =   00A4 
+    ZNOT           =   00AA     |   2 ZONELP             0AA0 R
+    ZOR            =   00B2     |     ZPLUS          =   00AC 
+    ZPOINT         =   00C7     |     ZPRINT         =   009E 
+    ZREM           =   008E     |     ZSGN           =   00B6 
+    ZSPC           =   00A8     |     ZSTEP          =   00AB 
+    ZTAB           =   00A5     |     ZTHEN          =   00A9 
+    ZTIMES         =   00AE     |     ZTO            =   00A6 
+
+ASxxxx Assembler V05.31  (Zilog Z80 / Hitachi HD64180)                  Page 7
+Hexadecimal [16-Bits]                                 Mon Mar 10 22:59:40 2025
+
+Area Table
+
+[_CSEG]
+   0 _CODE            size    0   flags C080
+   2 TEST             size 1C26   flags  908
+[_DSEG]
+   1 _DATA            size    0   flags C0C0
+
