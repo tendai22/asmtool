@@ -5,6 +5,8 @@ sed '
 #
 /|[3T] [^"]/{
 	# set marker to the tail
+	# restor escaped COMMA constant
+	s/'\''COMMA'\''/'\'','\''/
 	s/\(|[3T] ..*[^ ]\)  *|;/\1, |;/
 	s/\(|[3T] ..*[^ ]\) *$/\1,/
 	# convert '012ABH' to '0x12AB'
@@ -23,8 +25,8 @@ sed '
 	b
 :ppp
 	# remove marker
-	s/, |;/ |;/
-	s/,$//
+	s/\([^'\'']\), |;/\1 |;/
+	s/\([^'\'']\),$/\1/
 #	/|2 CP|/w/dev/tty
 }
 ' |tee x33.log
