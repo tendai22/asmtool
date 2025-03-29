@@ -5,8 +5,6 @@ sed '
 #
 /|[3T] [^"]/{
 	# set marker to the tail
-	# restor escaped COMMA constant
-	s/'\''COMMA'\''/'\'','\''/
 	s/\(|[3T] ..*[^ ]\)  *|;/\1, |;/
 	s/\(|[3T] ..*[^ ]\) *$/\1,/
 	# convert '012ABH' to '0x12AB'

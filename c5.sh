@@ -1,5 +1,8 @@
 #! /bin/sh
 sed '
+# restore ===COMMA=== to '\'',
+s/===COMMA===/'\'',/g
+s/===SEMICOLON===/'\'';/g
 # remove trailing : in EQU line
 /|2 EQU /s/:\(  *|2 \)/\1/
 # convert opcodes

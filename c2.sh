@@ -20,7 +20,7 @@ sed '
 /^|3 $/b end
 # operand line
     # preprocessing, escape ','
-	s/'\'','\''/'\''COMMA'\''/g
+	s/'\'','\''/===COMMA===/g
     s/\([^>]\)[     ]*$/\1/
     s/\([^>]\)>>>$/\1>>>/
 :loop
@@ -50,5 +50,4 @@ sed '
 	b loop
 :end
 	s/|3 \([^, ]\)/|3  \1/
-	s/'\''COMMA'\''/'\'','\''/g
 '
